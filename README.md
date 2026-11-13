@@ -7,6 +7,7 @@
 - **Official source code:** https://github.com/morluto/rea
 - **npm package:** `rea-agents`
 - **License:** MIT (REA itself). Third-party analysis tools have their own licenses.
+- **📦 Offline backup included** — unofficial mirror of the official repo + npm tarball, for use only if the official sources disappear. See **[Section 20 — Offline Backup / Mirror](#20-offline-backup--mirror-unofficial)**.
 
 > ⚠️ **Important:** Only download REA from `morluto/rea`, `rea.tools`, or the `rea-agents` npm package. Similar repository names do not establish an official release.
 
@@ -33,6 +34,7 @@
 17. [Troubleshooting](#17-troubleshooting)
 18. [Data, Privacy & Security](#18-data-privacy--security)
 19. [Quick Reference Checklist](#19-quick-reference-checklist)
+20. [Offline Backup / Mirror (Unofficial)](#20-offline-backup--mirror-unofficial)
 
 ---
 
@@ -573,8 +575,86 @@ Update REA, restart, retry. Then open an issue with: REA version, OS, target typ
 
 ---
 
+## 20. Offline Backup / Mirror (Unofficial)
+
+> ⚠️ **Read this first.**
+> There is no such thing as an "official backup" of an official project. The only official REA is **morluto/rea** (https://github.com/morluto/rea), **rea.tools**, and the **`rea-agents` npm package**.
+> What this repo provides is a complete, license-compliant **unofficial mirror / archive** of the official project, with the original MIT license and copyright notices preserved. It exists so that **if the official repository, website, or npm package ever disappears**, you can still obtain REA here — nothing more, nothing less.
+> If the official sources exist, **use them**. Do not present this backup as "official", and do not redistribute it as "the official REA". This repo is not affiliated with or endorsed by the REA authors.
+
+**License:** REA is MIT-licensed, which permits copying, modification and redistribution with notice. The full license, copyright headers and third-party notices are preserved in both the mirror branch and the npm tarball. No warranty of any kind is provided.
+
+### What's in the backup
+
+| Backup piece | Where | What it is |
+|---|---|---|
+| Source mirror | Branch **`mirror/rea`** | Complete git history of official `morluto/rea` `main` (as of the last sync — v6.9.0, commit `cdc4541ef707f256f83abe5018df01a25182cf0b`) |
+| Release tags | Tags **`rea-agents-*.*.*`** | All official release tags, pointing at the exact official commits (v2.7.0 → v6.9.0) |
+| npm tarball | **`backup/rea-agents-6.9.0.tgz`** | The official npm package, prebuilt (`dist/` included) — installs fully **offline** |
+| Sync script | **`scripts/sync-backup.ps1`** | Refreshes the mirror branch, tags and newest npm tarball from the official sources |
+| Restore script | **`scripts/restore-backup.ps1`** | One-shot offline install of the tarball + prints next steps |
+| The guide | `README.md` (this file) | Full setup guideline; valid regardless of which source REA comes from |
+
+### Keep the backup fresh
+
+Run weekly (or before you rely on it):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\sync-backup.ps1
+```
+
+It fetches `upstream/main` + all tags, force-updates `mirror/rea`, pushes the tags, `npm pack`s the newest `rea-agents-*.*.*` release into `backup/`, and prints the final `git add`/`commit`/`push` commands for the tarball.
+
+### Restore scenarios
+
+**Scenario A — GitHub is down, npm works:** nothing to restore. Keep using `npx rea-agents@latest setup`.
+
+**Scenario B — GitHub + npm are down:** install the prebuilt tarball from this repo (no network, no build tools needed):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\restore-backup.ps1
+# or manually:
+npm install --global .\backup\rea-agents-6.9.0.tgz
+rea setup
+rea doctor --client <your-client-id> --json
+```
+
+`rea setup` registers the MCP server + skill with your agent exactly as the official `npx rea-agents setup` would — offline, because it does not touch the registry.
+
+**Scenario C — You also want the full source/history:**
+
+```powershell
+git clone --branch mirror/rea --single-branch https://github.com/iamtanzir/Reverse-Engineering-Agent-Setup.git rea-source
+cd rea-source
+# Full official source at whatever the last sync captured.
+```
+
+Building from source requires Node.js 22.23.4+ / 24.22.1+ / 26.12.1+ and network access to the npm registry for dependencies (it is a turbo monorepo; `npm ci && npm run build`). The tarball path (Scenario B) needs neither — always prefer it for restore.
+
+### Verify what you restored
+
+```powershell
+# Source mirror integrity — commit should match the last synced upstream/main:
+git ls-remote https://github.com/iamtanzir/Reverse-Engineering-Agent-Setup.git refs/heads/mirror/rea
+git log mirror/rea -1 --format="%H %s"     # after cloning the mirror branch
+# Tarball integrity — version reported by the CLI itself:
+rea --version
+```
+
+If the hashes drift from what you recorded at backup time, treat the copy as suspect and re-sync from the official sources (if they are back) before trusting it.
+
+### What this backup does NOT guarantee
+
+- No security patches after the last sync — an abandoned backup is an outdated snapshot.
+- The official npm package may carry newer hotfixes than `mirror/rea` or the tarball.
+- Side services (rea.tools website, Discord, release notes, docs site) are reference material, not code you can restore from here.
+- If REA is later re-released under a different name/owner, this snapshot still works as the archived upstream — migrate deliberately, don't assume compatibility.
+
+---
+
 **Links**
 - Website: https://rea.tools/ · Get started: https://rea.tools/get-started/ · Guides: https://rea.tools/guides/
 - FAQ: https://rea.tools/faq/ · Showcases: https://rea.tools/showcases/
 - Source: https://github.com/morluto/rea (MIT) · Issues: https://github.com/morluto/rea/issues
 - Community: Discord (see rea.tools footer) · X: https://x.com/reatools
+- **This repo's backup:** branch `mirror/rea` · tags `rea-agents-*` · `backup/` · `scripts/sync-backup.ps1` · `scripts/restore-backup.ps1`

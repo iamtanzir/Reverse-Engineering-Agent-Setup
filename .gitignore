@@ -1,0 +1,4 @@
+node_modules/
+rea-work/
+*.log
+.DS_Store
