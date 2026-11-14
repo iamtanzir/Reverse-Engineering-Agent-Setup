@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="REA banner - Reverse Engineer Anything" width="100%">
+</p>
+
 # Platform-by-Platform Reverse Engineering Setup — Step by Step (Windows)
 
 > ⚠️ **Legal scope first — read this once.**
