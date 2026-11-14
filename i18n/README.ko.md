@@ -177,24 +177,24 @@ REA는 로컬 **MCP**를 사용하는 모든 에이전트를 지원합니다. �
 | Windsurf | `windsurf` | 동일 패턴; 에이전트 채팅 |
 | VS Code | `vscode` | 먼저 GitHub Copilot을 설정한 다음 Agent 모드 |
 | OpenCode | `opencode` | `npm install --global opencode-ai`, `opencode` 실행, `/connect`로 모델 연결, 이후 `--client opencode` |
-| Gemini CLI | `gemini_cli` | |
-| Devin | `devin` | |
-| GitHub Copilot CLI | `copilot_cli` | |
-| Antigravity | `antigravity` | |
-| Qwen Code | `qwen_code` | |
-| Kimi Code | `kimi` | |
-| Grok Build | `grok_build` | |
-| Command Code | `commandcode` | |
-| OMP | `omp` | |
-| Pi | `pi` | |
-| Hermes | `hermes` | |
-| Qoder | `qoder` | |
-| Factory Droid | `droid` | (npm ≥ 6.5.0) |
-| Trae | `trae` | (npm ≥ 6.5.0) |
-| WorkBuddy | `workbuddy` | (npm ≥ 6.5.0) |
-| ZCode | `zcode` | (npm ≥ 6.5.0) |
-| DeepSeek Harness | `dsh` | (npm ≥ 6.5.0) |
-| FreeBuff | `freebuff` | (npm ≥ 6.8.0) |
+| Gemini CLI | `gemini_cli` | `npm i -g @google/gemini-cli` → `gemini` |
+| Devin | `devin` | `irm https://static.devin.ai/cli/setup.ps1 \| iex` (Win) · `curl -fsSL https://cli.devin.ai/install.sh \| bash` (macOS/Linux) |
+| GitHub Copilot CLI | `copilot_cli` | `npm i -g @github/copilot` → `copilot` |
+| Antigravity | `antigravity` | Download IDE: https://antigravity.google/ |
+| Qwen Code | `qwen_code` | `npm i -g @qwen-code/qwen-code@latest` → `qwen` |
+| Kimi Code | `kimi` | `npm i -g @moonshot-ai/kimi-code` → `kimi` |
+| Grok Build | `grok_build` | `irm https://x.ai/cli/install.ps1 \| iex` (Win) · `curl -fsSL https://x.ai/cli/install.sh \| bash` (macOS/Linux) |
+| Command Code | `commandcode` | `npm i -g command-code` → `commandcode` |
+| OMP | `omp` | `irm https://omp.sh/install.ps1 \| iex` (Win) · `curl -fsSL https://omp.sh/install \| sh` (macOS/Linux) |
+| Pi | `pi` | `irm https://pi.dev/install.ps1 \| iex` (Win) · `curl -fsSL https://pi.dev/install.sh \| sh` (macOS/Linux) |
+| Hermes | `hermes` | `iex (irm https://hermes-agent.nousresearch.com/install.ps1)` (Win) · `curl -fsSL https://hermes-agent.nousresearch.com/install.sh \| bash` (macOS/Linux) |
+| Qoder | `qoder` | Download IDE: https://qoder.com/download |
+| Factory Droid | `droid` | `npm i -g droid` (Win) · `curl -fsSL https://app.factory.ai/cli \| sh` (macOS/Linux) |
+| Trae | `trae` | Download IDE: https://www.trae.ai/ |
+| WorkBuddy | `workbuddy` | Download app: https://www.workbuddy.ai/ |
+| ZCode | `zcode` | Download app: https://zcode.z.ai/ |
+| DeepSeek Harness | `dsh` | `npm i -g @deepseek-ai/dsh` |
+| FreeBuff | `freebuff` | `npm install -g freebuff` |
 
 **Grok Bot:** 봇의 채팅에서, 호스팅된 자신의 컴퓨터에 `rea`라는 이름의 커스텀 MCP 서버를 추가하도록 요청하세요:
 ```

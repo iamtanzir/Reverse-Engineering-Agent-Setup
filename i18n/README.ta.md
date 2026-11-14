@@ -177,24 +177,24 @@ REA எந்த agent-ஐயும் ஆதரிக்கிறது — உ
 | Windsurf | `windsurf` | அதே pattern; agent chat |
 | VS Code | `vscode` | முதலில் GitHub Copilot set up செய்யவும், பிறகு Agent mode |
 | OpenCode | `opencode` | `npm install --global opencode-ai`, `opencode` இயக்கி `/connect` மூலம் model சேர்க்கவும், பிறகு `--client opencode` |
-| Gemini CLI | `gemini_cli` | |
-| Devin | `devin` | |
-| GitHub Copilot CLI | `copilot_cli` | |
-| Antigravity | `antigravity` | |
-| Qwen Code | `qwen_code` | |
-| Kimi Code | `kimi` | |
-| Grok Build | `grok_build` | |
-| Command Code | `commandcode` | |
-| OMP | `omp` | |
-| Pi | `pi` | |
-| Hermes | `hermes` | |
-| Qoder | `qoder` | |
-| Factory Droid | `droid` | (npm ≥ 6.5.0) |
-| Trae | `trae` | (npm ≥ 6.5.0) |
-| WorkBuddy | `workbuddy` | (npm ≥ 6.5.0) |
-| ZCode | `zcode` | (npm ≥ 6.5.0) |
-| DeepSeek Harness | `dsh` | (npm ≥ 6.5.0) |
-| FreeBuff | `freebuff` | (npm ≥ 6.8.0) |
+| Gemini CLI | `gemini_cli` | `npm i -g @google/gemini-cli` → `gemini` |
+| Devin | `devin` | `irm https://static.devin.ai/cli/setup.ps1 \| iex` (Win) · `curl -fsSL https://cli.devin.ai/install.sh \| bash` (macOS/Linux) |
+| GitHub Copilot CLI | `copilot_cli` | `npm i -g @github/copilot` → `copilot` |
+| Antigravity | `antigravity` | Download IDE: https://antigravity.google/ |
+| Qwen Code | `qwen_code` | `npm i -g @qwen-code/qwen-code@latest` → `qwen` |
+| Kimi Code | `kimi` | `npm i -g @moonshot-ai/kimi-code` → `kimi` |
+| Grok Build | `grok_build` | `irm https://x.ai/cli/install.ps1 \| iex` (Win) · `curl -fsSL https://x.ai/cli/install.sh \| bash` (macOS/Linux) |
+| Command Code | `commandcode` | `npm i -g command-code` → `commandcode` |
+| OMP | `omp` | `irm https://omp.sh/install.ps1 \| iex` (Win) · `curl -fsSL https://omp.sh/install \| sh` (macOS/Linux) |
+| Pi | `pi` | `irm https://pi.dev/install.ps1 \| iex` (Win) · `curl -fsSL https://pi.dev/install.sh \| sh` (macOS/Linux) |
+| Hermes | `hermes` | `iex (irm https://hermes-agent.nousresearch.com/install.ps1)` (Win) · `curl -fsSL https://hermes-agent.nousresearch.com/install.sh \| bash` (macOS/Linux) |
+| Qoder | `qoder` | Download IDE: https://qoder.com/download |
+| Factory Droid | `droid` | `npm i -g droid` (Win) · `curl -fsSL https://app.factory.ai/cli \| sh` (macOS/Linux) |
+| Trae | `trae` | Download IDE: https://www.trae.ai/ |
+| WorkBuddy | `workbuddy` | Download app: https://www.workbuddy.ai/ |
+| ZCode | `zcode` | Download app: https://zcode.z.ai/ |
+| DeepSeek Harness | `dsh` | `npm i -g @deepseek-ai/dsh` |
+| FreeBuff | `freebuff` | `npm install -g freebuff` |
 
 **Grok Bot:** bot-இன் chat-இல், அதன் hosted computer-இல் `rea` என்ற custom MCP server சேர்க்கச் சொல்லுங்கள்:
 ```
