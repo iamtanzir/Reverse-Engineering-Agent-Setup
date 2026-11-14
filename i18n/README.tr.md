@@ -16,7 +16,7 @@
 - **npm paketi:** `rea-agents`
 - **Lisans:** MIT (REA'nın kendisi). Üçüncü taraf analiz araçlarının kendi lisansları vardır.
 - **📚 [PLATFORM-GUIDE.md](../PLATFORM-GUIDE.md)** (İngilizce) — Platforma özel adım adım kurulum (Windows öncelikli: Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2), sorun giderme dahil
-- **📦 Çevrimdışı yedek dahildir** — resmi deponun gayriresmi aynısı + npm tarball; yalnızca resmi kaynaklar kaybolursa kullanılır. **[Bölüm 20 — Çevrimdışı Yedek / Ayna (Gayriresmi)](#20-offline-backup--mirror-unofficial)**'ye bakın.
+- **📦 Çevrimdışı yedek dahildir** — resmi deponun gayriresmi aynısı + npm tarball; yalnızca resmi kaynaklar kaybolursa kullanılır. **[Bölüm 20 — Çevrimdışı Yedek / Ayna (Gayriresmi)](#20-çevrimdışı-yedek--ayna-gayriresmi)**'ye bakın.
 
 > ⚠️ **Önemli:** REA'yı yalnızca `morluto/rea`, `rea.tools` veya `rea-agents` npm paketinden indirin. Benzer depo adları resmi bir yayın anlamına gelmez.
 
@@ -52,7 +52,7 @@
 **REA şunlardır:**
 - Yerel MCP sunucusu + ajan yeteneği — **kodlama aracınıza** yerel olarak sahip olduğunuz yazılımları denetleme imkânı verir.
 - **Kanıt** döndürür: assembly, sözde kod, modül haritaları, IPC kanal eşlemeleri, yakalanan ağ trafiği, kaynak konumlar — orijinal kaynak kodu değil.
-- Analiz **kendi makinenizde** çalışır. Uygulamanız REA tarafından yüklenmez; ajanınızın kullandığı model sağlayıcısı sonuçları görür (bkz. [Veri ve Gizlilik](#18-data-privacy--security)).
+- Analiz **kendi makinenizde** çalışır. Uygulamanız REA tarafından yüklenmez; ajanınızın kullandığı model sağlayıcısı sonuçları görür (bkz. [Veri ve Gizlilik](#18-veri-gizlilik-ve-güvenlik)).
 
 **REA şunlar değildir:**
 - "İkili dosyayı orijinal kaynağa çeviren" sihirli bir düğme değil. Sonuçlar assembly/sözde kod ve referanslardır; ajanınız açıklar ve davranışı yeniden oluşturmanıza yardımcı olur.

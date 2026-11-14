@@ -52,7 +52,7 @@
 **REA yeh hai:**
 - Local MCP server + agent skill — aapke **coding agent** ko local software inspect karne deta hai.
 - **Evidence** return karta hai: assembly, pseudocode, module maps, IPC channel pairings, captured network traffic, source locations — original source code nahi.
-- Analysis **aapke machine par** chalti hai. Aapki app REA ke zariye upload nahi hoti; aapke agent ka model provider results dekhta hai (dekhein [Data & Privacy](#18-data-privacy--security)).
+- Analysis **aapke machine par** chalti hai. Aapki app REA ke zariye upload nahi hoti; aapke agent ka model provider results dekhta hai (dekhein [Data & Privacy](#18-data-privacy-aur-security)).
 
 **REA yeh nahi hai:**
 - "Source code mein wapas badalne" wala magic button. Results assembly/pseudocode aur references hain; aapka agent samjhata hai aur rebuild karne mein madad karta hai.

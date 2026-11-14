@@ -16,7 +16,7 @@
 - **Pacote npm:** `rea-agents`
 - **Licença:** MIT (o próprio REA). As ferramentas de análise de terceiros têm suas próprias licenças.
 - **📚 [PLATFORM-GUIDE.md](../PLATFORM-GUIDE.md)** (em inglês) — configuração passo a passo por plataforma (Windows primeiro: Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2) com solução de problemas
-- **📦 Backup offline incluso** — espelho não oficial do repositório oficial + tarball npm; apenas para o caso de as fontes oficiais sumirem. Veja **[Seção 20 — Backup / espelho offline (não oficial)](#20-offline-backup--mirror-unofficial)**.
+- **📦 Backup offline incluso** — espelho não oficial do repositório oficial + tarball npm; apenas para o caso de as fontes oficiais sumirem. Veja **[Seção 20 — Backup / espelho offline (não oficial)](#20-backup--espelho-offline-não-oficial)**.
 
 > ⚠️ **Importante:** Baixe o REA somente de `morluto/rea`, `rea.tools` ou do pacote npm `rea-agents`. Um nome de repositório parecido não é prova de lançamento oficial.
 
@@ -52,7 +52,7 @@
 **O REA é:**
 - Um servidor MCP local + habilidade de agente — permite que **seu agente de código** inspecione softwares que você tem localmente.
 - Retorna **evidências**: assembly, pseudocódigo, mapas de módulos, emparelhamentos de canais IPC, tráfego de rede capturado, localizações de código — não o código-fonte original.
-- A análise roda **na sua máquina**. Seu app não é enviado pelo REA; o provedor de modelo do seu agente vê os resultados (veja [Dados e privacidade](#18-data-privacy--security)).
+- A análise roda **na sua máquina**. Seu app não é enviado pelo REA; o provedor de modelo do seu agente vê os resultados (veja [Dados e privacidade](#18-dados-privacidade-e-segurança)).
 
 **O REA não é:**
 - Um botão mágico de "voltar ao código-fonte". Os resultados são assembly/pseudocódigo e referências; seu agente explica e ajuda a reconstruir o comportamento.

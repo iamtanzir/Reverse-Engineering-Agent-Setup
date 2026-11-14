@@ -16,7 +16,7 @@
 - **Paket npm:** `rea-agents`
 - **Lisensi:** MIT (REA sendiri). Alat analisis pihak ketiga punya lisensi masing-masing.
 - **📚 [PLATFORM-GUIDE.md](../PLATFORM-GUIDE.md)** (Inggris) — penyiapan langkah demi langkah per platform (utamakan Windows: Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2) beserta pemecahan masalah
-- **📦 Termasuk backup offline** — mirror tidak resmi dari repo resmi + tarball npm; hanya jika sumber resmi hilang. Lihat **[Bagian 20 — Backup / Mirror offline (tidak resmi)](#20-offline-backup--mirror-unofficial)**.
+- **📦 Termasuk backup offline** — mirror tidak resmi dari repo resmi + tarball npm; hanya jika sumber resmi hilang. Lihat **[Bagian 20 — Backup / Mirror offline (tidak resmi)](#20-backup--mirror-offline-tidak-resmi)**.
 
 > ⚠️ **Penting:** Unduh REA hanya dari `morluto/rea`, `rea.tools`, atau paket npm `rea-agents`. Nama repo yang mirip bukan bukti rilis resmi.
 
@@ -52,7 +52,7 @@
 **REA adalah:**
 - Server MCP lokal + kemampuan agen — memungkinkan **agen coding Anda** memeriksa perangkat lunak yang ada di mesin Anda.
 - Mengembalikan **bukti**: assembly, pseudocode, peta modul, pasangan channel IPC, lalu lintas jaringan yang ditangkap, lokasi sumber — bukan kode sumber asli.
-- Analisis berjalan **di mesin Anda**. Aplikasi Anda tidak diunggah oleh REA; penyedia model agen Anda melihat hasilnya (lihat [Data & Privasi](#18-data-privacy--security)).
+- Analisis berjalan **di mesin Anda**. Aplikasi Anda tidak diunggah oleh REA; penyedia model agen Anda melihat hasilnya (lihat [Data & Privasi](#18-data-privasi--keamanan)).
 
 **REA bukan:**
 - Tombol ajaib "kembalikan ke kode sumber". Hasilnya adalah assembly/pseudocode dan referensi; agen Anda menjelaskan dan membantu membangun kembali perilakunya.

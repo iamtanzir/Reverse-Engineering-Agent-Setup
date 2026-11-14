@@ -16,7 +16,7 @@
 - **Pachet npm:** `rea-agents`
 - **Licență:** MIT (REA însuși). Instrumentele de analiză de la terți au propriile licențe.
 - **📚 [PLATFORM-GUIDE.md](../PLATFORM-GUIDE.md)** (în engleză) — configurare pas cu pas pe platformă (întâi Windows: Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2), cu depanare
-- **📦 Backup offline inclus** — mirror neoficial al repo-ului oficial + tarball npm; doar dacă sursele oficiale dispar. Vezi **[Secțiunea 20 — Backup / Mirror offline (neoficial)](#20-offline-backup--mirror-unofficial)**.
+- **📦 Backup offline inclus** — mirror neoficial al repo-ului oficial + tarball npm; doar dacă sursele oficiale dispar. Vezi **[Secțiunea 20 — Backup / Mirror offline (neoficial)](#20-backup--mirror-offline-neoficial)**.
 
 > ⚠️ **Important:** Descarcă REA doar de la `morluto/rea`, `rea.tools` sau pachetul npm `rea-agents`. Un nume similar de repo nu dovedește o lansare oficială.
 
@@ -52,7 +52,7 @@
 **REA este:**
 - Un server MCP local + abilitate a agentului — permite **agentului tău de coding** să inspecteze software-ul pe care îl ai local.
 - Returnează **dovezi**: assembly, pseudocod, hărți de module, perechi de canale IPC, trafic de rețea capturat, locații ale sursei — nu codul sursă original.
-- Analiza rulează **pe mașina ta**. Aplicația ta nu este încărcată de REA; furnizorul modelului agentului vede rezultatele (vezi [Date și confidențialitate](#18-data-privacy--security)).
+- Analiza rulează **pe mașina ta**. Aplicația ta nu este încărcată de REA; furnizorul modelului agentului vede rezultatele (vezi [Date și confidențialitate](#18-date-confidențialitate-și-securitate)).
 
 **REA nu este:**
 - Un buton magic de „revenire la codul sursă". Rezultatele sunt assembly/pseudocod și referințe; agentul tău explică și te ajută să reconstruiești comportamentul.

@@ -16,7 +16,7 @@
 - **npm package:** `rea-agents`
 - **Giấy phép:** MIT (REA tự thân). Công cụ phân tích của bên thứ ba có giấy phép riêng.
 - **📚 [PLATFORM-GUIDE.md](../PLATFORM-GUIDE.md)** (tiếng Anh) — cài đặt từng bước theo nền tảng (Windows trước: Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2) kèm xử lý lỗi
-- **📦 Có sẵn backup offline** — mirror không chính thức của repo chính thức + npm tarball; chỉ dùng nếu nguồn chính thức biến mất. Xem **[Phần 20 — Backup / Mirror offline (không chính thức)](#20-offline-backup--mirror-unofficial)**.
+- **📦 Có sẵn backup offline** — mirror không chính thức của repo chính thức + npm tarball; chỉ dùng nếu nguồn chính thức biến mất. Xem **[Phần 20 — Backup / Mirror offline (không chính thức)](#20-backup--mirror-offline-không-chính-thức)**.
 
 > ⚠️ **Quan trọng:** Chỉ tải REA từ `morluto/rea`, `rea.tools`, hoặc npm package `rea-agents`. Tên repo tương tự không chứng minh đó là bản chính thức.
 
@@ -52,7 +52,7 @@
 **REA là:**
 - MCP server cục bộ + kỹ năng agent — cho **coding agent** của bạn khả năng kiểm tra phần mềm trên máy.
 - Trả về **bằng chứng**: assembly, pseudocode, bản đồ module, cặp IPC channel, traffic mạng bị bắt, vị trí source — không phải mã nguồn gốc.
-- Phân tích chạy **trên máy bạn**. Ứng dụng của bạn không bị REA upload; nhà cung cấp model của agent sẽ thấy kết quả (xem [Dữ liệu & Riêng tư](#18-data-privacy--security)).
+- Phân tích chạy **trên máy bạn**. Ứng dụng của bạn không bị REA upload; nhà cung cấp model của agent sẽ thấy kết quả (xem [Dữ liệu & Riêng tư](#18-dữ-liệu-riêng-tư--bảo-mật)).
 
 **REA không phải là:**
 - Nút ma thuật "biến ngược thành source". Kết quả là assembly/pseudocode và tham chiếu; agent giải thích và giúp bạn dựng lại hành vi.

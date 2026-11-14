@@ -16,7 +16,7 @@
 - **npm-Paket:** `rea-agents`
 - **Lizenz:** MIT (REA selbst). Analysewerkzeuge Dritter haben eigene Lizenzen.
 - **📚 [PLATFORM-GUIDE.md](../PLATFORM-GUIDE.md)** (Englisch) — Schritt-für-Schritt-Einrichtung pro Plattform (Windows zuerst: Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2) mit Fehlerbehandlung
-- **📦 Offline-Backup enthalten** — inoffizielles Mirror des offiziellen Repos + npm-Tarball; nur für den Fall, dass die offiziellen Quellen verschwinden. Siehe **[Abschnitt 20 — Offline-Backup / Mirror (inoffiziell)](#20-offline-backup--mirror-unofficial)**.
+- **📦 Offline-Backup enthalten** — inoffizielles Mirror des offiziellen Repos + npm-Tarball; nur für den Fall, dass die offiziellen Quellen verschwinden. Siehe **[Abschnitt 20 — Offline-Backup / Mirror (inoffiziell)](#20-offline-backup--mirror-inoffiziell)**.
 
 > ⚠️ **Wichtig:** Laden Sie REA nur von `morluto/rea`, `rea.tools` oder dem npm-Paket `rea-agents` herunter. Ähnliche Repositorynamen beweisen keine offizielle Veröffentlichung.
 
@@ -52,7 +52,7 @@
 **REA ist:**
 - Lokaler MCP-Server + Agent-Fähigkeit — Ihr **Coding-Agent** kann Software inspizieren, die Sie lokal haben.
 - Liefert **Beweise**: Assembly, Pseudocode, Modul-Maps, IPC-Kanal-Paarungen, erfasster Netzwerkverkehr, Quellpositionen — nicht den Originalquelltext.
-- Analyse läuft **auf Ihrem Rechner**. Ihre App wird von REA nicht hochgeladen; der Modell-Anbieter Ihres Agenten sieht die Ergebnisse (siehe [Daten & Datenschutz](#18-data-privacy--security)).
+- Analyse läuft **auf Ihrem Rechner**. Ihre App wird von REA nicht hochgeladen; der Modell-Anbieter Ihres Agenten sieht die Ergebnisse (siehe [Daten & Datenschutz](#18-daten-datenschutz--sicherheit)).
 
 **REA ist nicht:**
 - Kein magischer „Zurück in Quellcode"-Knopf. Ergebnisse sind Assembly/Pseudocode und Referenzen; Ihr Agent erklärt und hilft, das Verhalten nachzubauen.
