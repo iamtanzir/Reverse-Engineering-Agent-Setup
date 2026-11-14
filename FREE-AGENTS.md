@@ -8,6 +8,8 @@
 
 > ℹ️ English is authoritative here; translations of this page may lag behind. Free tiers and model names change constantly — always verify quotas and pricing on the provider's own page before relying on them.
 
+> 🧪 **Scope of the claims:** only the stack described in [section 11](#11-verification-scope-what-was-tested-and-what-was-not) was actually installed and run. Everything else on this page comes from vendor documentation, so treat it as a starting point rather than a guarantee.
+
 ---
 
 ## Contents
@@ -22,7 +24,7 @@
 8. What free actually costs you (limits, privacy, quality)
 9. Hardware guide for local models
 10. Common mistakes
-11. Verification log (tested end to end)
+11. Verification scope: what was tested and what was not
 12. Links
 
 ---
@@ -288,13 +290,15 @@ CPU-only inference is workable for 7B–14B but expect tens of seconds per answe
 
 ---
 
-## 11. Verification log (tested end to end)
+## 11. Verification scope: what was tested and what was not
 
-Everything below was actually run, not assumed. Host: Windows x64 (build 26300.9974), Node.js 26.13.0, REA **6.9.0** restored from this repo's offline tarball (`backup/rea-agents-6.9.0.tgz`).
+This page is written from documentation plus **one** hands-on run. That run is recorded below so you can judge how far its results carry — it is not a claim that every combination on this page works, and nothing here is "100% verified" beyond what the tables say.
 
-### 11.1 Install and connection
+**Tested on:** Windows x64 (build 26300.9974), Node.js 26.13.0, REA **6.9.0** restored from this repo's offline tarball (`backup/rea-agents-6.9.0.tgz`), agent OpenCode, model `opencode/deepseek-v4.1-flash-free`.
 
-| Check | Command | Result |
+### 11.1 Verified: installation and MCP connection
+
+| Check | How it was checked | Result |
 |---|---|---|
 | Offline restore | `tar -xzf backup/rea-agents-6.9.0.tgz` → `node package/scripts/rea.mjs --version` | `6.9.0` |
 | MCP handshake | `initialize` → `tools/list` over stdio | serverInfo `rea` 6.9.0, protocol `2025-06-18` |
@@ -302,13 +306,13 @@ Everything below was actually run, not assumed. Host: Windows x64 (build 26300.9
 | Registration | `rea setup --client opencode --yes` | `status: ready`, command identity `owned`, state `aligned` |
 | Skill | bundled investigation skill | v62, 255 tools, `aligned` |
 | Health | `rea doctor --client opencode --json` | `"healthy": true` |
-| Model used for the run | OpenCode model picker | `opencode/deepseek-v4.1-flash-free` — **$0 input / $0 output** |
+| Model cost | OpenCode model list | `opencode/deepseek-v4.1-flash-free`, $0 input / $0 output |
 
-`environment_healthy` stays `false` on this host, and that is correct: no Ghidra, IDA, Hopper, JADX or Kuna is installed, so native/Android providers report `missing_analysis_engine`. Static JavaScript, Electron, web-bundle, ASAR, browser and WASM work does not need any of them.
+`environment_healthy` stayed `false` throughout, which is correct for this host: no Ghidra, IDA, Hopper, JADX or Kuna is installed, so native and Android providers report `missing_analysis_engine`. Static JavaScript, Electron, web-bundle, ASAR, browser and WASM work needs none of them — but that also means **no native analysis was exercised in this test.**
 
-### 11.2 Real analysis through the free model
+### 11.2 Verified: one real analysis (Electron)
 
-A five-file Electron fixture (`main.js`, `preload.js`, `renderer.js`, `index.html`, `package.json`) was analysed with `analyze_javascript_application` — driven entirely by the free model through MCP:
+A five-file Electron fixture (`main.js`, `preload.js`, `renderer.js`, `index.html`, `package.json`) was analysed with `analyze_javascript_application`, with the free model driving the MCP call:
 
 ```json
 {
@@ -333,9 +337,9 @@ What that means in practice:
 - All four renderer `ipcRenderer.invoke` calls were paired with their main-process `ipcMain.handle` registrations (`notes:export`, `notes:import`, `system:open-external`, `dialog:pick-file`).
 - `notes:progress` was listed separately as a main→renderer listener, not confused with an invoke/handle pair.
 - The `contextBridge` surface was recovered as one API with five exposed members.
-- 5 files, 3 parsed JavaScript files, 459 AST nodes, 26 findings, 0 parse failures.
+- 5 files, 3 parsed JavaScript files, 459 AST nodes, 26 findings, 0 parse failures — about 2.8 KB of readable source in total.
 
-### 11.3 What REA refused to guess
+### 11.3 Verified: REA refused to guess
 
 The export path is built at runtime:
 
@@ -343,9 +347,45 @@ The export path is built at runtime:
 path.join(app.getPath('documents'), 'notes.csv')
 ```
 
-REA did **not** invent `notes.csv` as a literal — it kept the path in the unknown set (192 semantic unknowns in this fixture). That is the designed behaviour: a static analyser that guessed here would be lying to you. Read the unknowns list before you trust a conclusion.
+REA did **not** invent `notes.csv` as a literal; it kept the path in the unknown set (192 semantic unknowns in this fixture). That is the designed behaviour — a static analyser that guessed there would be lying to you. Read the unknowns list before trusting a conclusion.
 
-**Conclusion:** the zero-cost stack works. A free model drove REA's MCP tools, REA performed the analysis locally, and no paid API call was involved.
+### 11.4 Not verified: do not treat these as confirmed
+
+| Area | Why it is unverified here |
+|---|---|
+| Native binaries (PE, ELF, Mach-O, .NET) | No Ghidra, IDA or Hopper installed; no native procedure was analysed |
+| Android packages | No JADX or Kuna installed; `inspect_android_package` was never run |
+| Frida and live runtime attachment | npm blocked `frida`'s install script (`allowScripts`), so runtime tooling was never exercised |
+| Browser and CDP runtime observation | Not run in this test |
+| Large, minified or bundled code, ASAR, source maps, WASM, firmware, PCAP | Not run; the fixture is small and readable |
+| Other free models | Only one free model was used. Small local models may fail tool calling entirely |
+| Other agents (Gemini CLI, Qwen Code, Cline, Roo, Copilot Free) | Setup IDs are documented from REA's own docs; they were not each installed and tested |
+| Cost over time | This run cost $0; sustained free-tier quotas were not measured |
+| Other operating systems | Windows x64 only; macOS and Linux paths are untested here |
+| Other REA versions | 6.9.0 only |
+
+If your case falls in that table, the honest status is **unknown** — not broken, and not guaranteed.
+
+### 11.5 Reproduce the same test
+
+```powershell
+# 1. Durable install (the npm tarball, or the repo tarball offline)
+npm install --global rea-agents@6.9.0
+
+# 2. Register and verify
+rea setup --client opencode --yes
+rea doctor --client opencode --json        # expect "healthy": true
+
+# 3. In OpenCode, pick a free model, then ask for the tools
+#    "List the REA tools you can use."
+
+# 4. Point it at any extracted Electron app
+#    analyze_javascript_application({ input_path: "C:\\path\\to\\app", detail: "summary" })
+```
+
+**What this establishes:** on a Windows host with no native analysis engine, a $0 model could drive REA's MCP tools, and REA recovered a real Electron IPC graph from source alone, with no paid API involved.
+
+**What it does not establish:** that every REA capability works on your machine, that other free models behave the same way, or that REA's conclusions are complete. REA reports coverage and unknowns with every result — read those, not this page's summary.
 
 ---
 

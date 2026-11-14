@@ -168,7 +168,7 @@ cd rea-work
 
 REA supports any agent that speaks local **MCP**. Pick one — all examples below use the client's **setup ID** for `--client <id>`.
 
-> 🆓 **No budget for a model?** REA contains no LLM of its own — the agent supplies it. See **[FREE-AGENTS.md](FREE-AGENTS.md)** for fully free combinations (OpenCode with free models, fully local Ollama, Gemini CLI's free tier, Qwen Code) and their trade-offs — including a [verification log](FREE-AGENTS.md#11-verification-log-tested-end-to-end) from a real end-to-end run on this repo's backup tarball.
+> 🆓 **No budget for a model?** REA contains no LLM of its own — the agent supplies it. See **[FREE-AGENTS.md](FREE-AGENTS.md)** for fully free combinations (OpenCode with free models, fully local Ollama, Gemini CLI's free tier, Qwen Code) and their trade-offs. [Section 11](FREE-AGENTS.md#11-verification-scope-what-was-tested-and-what-was-not) records one real test run and lists exactly what it did **not** cover.
 
 | Client | Setup ID | Install / notes |
 |---|---|---|
