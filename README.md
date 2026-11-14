@@ -7,6 +7,7 @@
 - **Official source code:** https://github.com/morluto/rea
 - **npm package:** `rea-agents`
 - **License:** MIT (REA itself). Third-party analysis tools have their own licenses.
+- **📚 [PLATFORM-GUIDE.md](PLATFORM-GUIDE.md)** — per-platform, Windows-first, step-by-step setup (Electron, Web, .NET, Android, WASM, Native/Ghidra, WSL2) with troubleshooting
 - **📦 Offline backup included** — unofficial mirror of the official repo + npm tarball, for use only if the official sources disappear. See **[Section 20 — Offline Backup / Mirror](#20-offline-backup--mirror-unofficial)**.
 
 > ⚠️ **Important:** Only download REA from `morluto/rea`, `rea.tools`, or the `rea-agents` npm package. Similar repository names do not establish an official release.
