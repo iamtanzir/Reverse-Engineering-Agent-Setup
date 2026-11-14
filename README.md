@@ -1,5 +1,9 @@
 # Reverse Engineering Agent — Full Setup Guideline
 
+> **Languages:** 🇬🇧 [English](../README.md) (main / authoritative) · 🇨🇳 [简体中文](i18n/README.zh-CN.md) · 🇹🇼 [繁體中文](i18n/README.zh-TW.md) · 🇯🇵 [日本語](i18n/README.ja.md) · 🇰🇷 [한국어](i18n/README.ko.md) · 🇹🇷 [Türkçe](i18n/README.tr.md) · 🇷🇺 [Русский](i18n/README.ru.md) · 🇻🇳 [Tiếng Việt](i18n/README.vi.md) · 🇹🇭 [ไทย](i18n/README.th.md) · 🇩🇪 [Deutsch](i18n/README.de.md) · 🇪🇸 [Español](i18n/README.es.md) · 🇫🇷 [Français](i18n/README.fr.md) · 🇺🇦 [Українська](i18n/README.uk.md) · 🇵🇱 [Polski](i18n/README.pl.md) · 🇧🇷 [Português (Brasil)](i18n/README.pt-BR.md) · 🇸🇦 [العربية](i18n/README.ar.md) · 🇮🇷 [فارسی](i18n/README.fa.md) · 🇮🇩 [Bahasa Indonesia](i18n/README.id.md) · 🇮🇹 [Italiano](i18n/README.it.md) · 🇬🇷 [Ελληνικά](i18n/README.el.md) · 🇮🇳 [മലയാളം](i18n/README.ml.md) · 🇵🇰 [Roman Urdu](i18n/README.ur-Latn.md) · 🇷🇴 [Română](i18n/README.ro.md) · 🇧🇬 [Български](i18n/README.bg.md)
+>
+> ℹ️ Translations mirror the English master. If they disagree, **English wins**. Code blocks, paths and commands are never translated.
+
 > **REA — Reverse Engineer Anything**
 > An MCP (Model Context Protocol) server + investigation skill that gives your coding agent the tools to inspect software: native binaries, JavaScript/Electron apps, browsers, .NET, Android, firmware, and more.
 
