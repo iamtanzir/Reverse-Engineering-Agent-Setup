@@ -22,7 +22,8 @@
 8. What free actually costs you (limits, privacy, quality)
 9. Hardware guide for local models
 10. Common mistakes
-11. Links
+11. Verification log (tested end to end)
+12. Links
 
 ---
 
@@ -287,7 +288,68 @@ CPU-only inference is workable for 7B–14B but expect tens of seconds per answe
 
 ---
 
-## 11. Links
+## 11. Verification log (tested end to end)
+
+Everything below was actually run, not assumed. Host: Windows x64 (build 26300.9974), Node.js 26.13.0, REA **6.9.0** restored from this repo's offline tarball (`backup/rea-agents-6.9.0.tgz`).
+
+### 11.1 Install and connection
+
+| Check | Command | Result |
+|---|---|---|
+| Offline restore | `tar -xzf backup/rea-agents-6.9.0.tgz` → `node package/scripts/rea.mjs --version` | `6.9.0` |
+| MCP handshake | `initialize` → `tools/list` over stdio | serverInfo `rea` 6.9.0, protocol `2025-06-18` |
+| Tool inventory | `tools/list` | **255 tools**, 6 prompts |
+| Registration | `rea setup --client opencode --yes` | `status: ready`, command identity `owned`, state `aligned` |
+| Skill | bundled investigation skill | v62, 255 tools, `aligned` |
+| Health | `rea doctor --client opencode --json` | `"healthy": true` |
+| Model used for the run | OpenCode model picker | `opencode/deepseek-v4.1-flash-free` — **$0 input / $0 output** |
+
+`environment_healthy` stays `false` on this host, and that is correct: no Ghidra, IDA, Hopper, JADX or Kuna is installed, so native/Android providers report `missing_analysis_engine`. Static JavaScript, Electron, web-bundle, ASAR, browser and WASM work does not need any of them.
+
+### 11.2 Real analysis through the free model
+
+A five-file Electron fixture (`main.js`, `preload.js`, `renderer.js`, `index.html`, `package.json`) was analysed with `analyze_javascript_application` — driven entirely by the free model through MCP:
+
+```json
+{
+  "electron_semantics": "recovered",
+  "browser_windows": 1,
+  "preload_entrypoints": 1,
+  "context_bridge_apis": 1,
+  "exposed_api_members": 5,
+  "ipc": {
+    "literal_channels": 5,
+    "main_handlers": 4,
+    "renderer_transmissions": 4,
+    "paired_renderer_transmissions": 4,
+    "unpaired_literal_renderer_transmissions": 0,
+    "ambiguous_renderer_transmissions": 0
+  }
+}
+```
+
+What that means in practice:
+
+- All four renderer `ipcRenderer.invoke` calls were paired with their main-process `ipcMain.handle` registrations (`notes:export`, `notes:import`, `system:open-external`, `dialog:pick-file`).
+- `notes:progress` was listed separately as a main→renderer listener, not confused with an invoke/handle pair.
+- The `contextBridge` surface was recovered as one API with five exposed members.
+- 5 files, 3 parsed JavaScript files, 459 AST nodes, 26 findings, 0 parse failures.
+
+### 11.3 What REA refused to guess
+
+The export path is built at runtime:
+
+```js
+path.join(app.getPath('documents'), 'notes.csv')
+```
+
+REA did **not** invent `notes.csv` as a literal — it kept the path in the unknown set (192 semantic unknowns in this fixture). That is the designed behaviour: a static analyser that guessed here would be lying to you. Read the unknowns list before you trust a conclusion.
+
+**Conclusion:** the zero-cost stack works. A free model drove REA's MCP tools, REA performed the analysis locally, and no paid API call was involved.
+
+---
+
+## 12. Links
 
 - **REA:** https://rea.tools/ · https://github.com/morluto/rea · `rea-agents` on npm
 - **OpenCode:** https://opencode.ai/
